@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM Integration Bus V10 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM Integration Bus V10 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM Integration Bus V10 Tutorial" /> 
+		
+		<title>IBM Integration Bus V10 Tutorial</title>
+
+    	<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="http://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Hybrid Connect Logging <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to register IBM Integration Bus with the Hybrid Connect logging (Logmet) service. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, the <b>LogMessages</b> application will be created in you workspace. </p>
+								
+							
+								<p> <b>LogMessages</b> uses the <b>Compute</b> node to log different types of messages into the system log and also a <b>Trace</b> node for tracking the execution of the flow. This will be use as a way to create data for the Logmet service. </p>
+								
+							
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Configuring IBM Integration Bus Kibana dashboard</h4>
+						    
+						    
+								<p> Follow the instructions below to configuration an integration server to the IBM Integration Bus Kibana dashboard. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Follow the instructions in <b>Configuring the integration server and loading the IBM Integration Bus Kibana dashboard manually</b> of the Knowledge Center to setup and import all thes into <b>Kibana 4</b>.
+										
+										</li>
+									
+										<li> Once everything are imported, select the <b>Dashboard</b> tab under <b>Kibana 4</b> and click on <b>Load Saved Dasboard</b> (open folder) button.
+										
+										</li>
+									
+										<li> Under the <b>Dashboard Filter</b> entry field, select <b>IBM Integration Bus Dashboard</b>, this will open the imported dashboard with the predefined visuals.
+										
+										</li>
+									
+										<li> If the visuals are displaying the message <b>No results found</b>, try changing the time filter (clock icon on top right) to a larger value.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				    	<div class="row content-details">
+					      	<h4>Follow these steps to complete the tutorial</h4>
+					        
+						    
+								<p> Deploy the <b>LogMessages</b> application to your integration server and run it a few times to generate some data for the log. </p>
+								
+							
+								<p> Use the instruction below to create a custom chart to track a specific IBM Integration Bus log messages: </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> In <b>Kibana 4</b> click on <b>Visualize</b> and then <b>Vertical bar chart</b>.
+										
+										</li>
+									
+										<li> Select <b>From a saved search</b>, and then <b>IBM Log Events</b>.
+										
+										</li>
+									
+										<li> Click on <b>X-Axis</b> as the bucket type.
+										
+										</li>
+									
+										<li> Under <b>Aggregation</b>, select <b>Date Histogram</b>.
+										
+										</li>
+									
+										<li> Click on <b>Add sub-buckets</b>Split Bars.
+										
+										</li>
+									
+										<li> In the <b>Sub Aggregation</b> field select <b>Filters</b>.
+										
+										</li>
+									
+										<li> Enter <b>ibm_messageId:3051</b> into <b>Filter 1</b> and press the <b>Apply changes</b> (white triangle in a green background) button to update the chart to show data for message id 3051.
+										
+										</li>
+									
+										<li> Click on the <b>Save Visualize</b> (small disk icon on top right) to save the chart.
+										
+										</li>
+									
+										<li> Once the chart is saved, it can be add to the dashboard by clicking on the <b>Add Visualization</b> button.
+										
+										</li>
+									
+										<li> Select the new chart from the list and it will be added to the bottom of the dashboard. You can move and resize it, or replace an existing one in the dashboard.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial has shown how to register IBM Integration Bus with Hybrid Connect Logging service, and create new charts in Kibana to track a particular message. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+							   	
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="deployArtifacts()"> Deploy <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+				    
+					
+					
+					<hr>
+					
+					
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="cleanUp()" title="Clean up and remove any changes in your workspace made by the tutorial."> Clean Up <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/close-cancel-error_128-red.png"></a></h4>
+				    
+					
+				    </div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
