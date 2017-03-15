@@ -136,7 +136,7 @@
                         "type":"ordered",
                         "details":[
                            {
-                               "details":"When you click the Import option (to the right), the <b>LogMessages</b> Application will be created in your workspace."
+                               "details":"When you click Import, the <b>LogMessages</b> Application will be created in your workspace."
                            },
                            {
                                "details":"The <b>LogMessages</b> application also contains a message flow named <b>LogMessages</b> which has a <b>Compute</b> node which logs different types of messages into the system log and also a <b>Trace</b> node for recording the logical tree structure in the log at the end of the flow. The execution of this message flow will be used as a way to create data for us to view in the Kibana dashboard."
@@ -177,32 +177,57 @@
         "overview": 
         {
           "name": "Run",
-          "heading": "Configuring IBM Integration Bus Kibana dashboard",
+          "heading": "",
           "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
           "sections": 
           [
             {
-              "section": "Follow the instructions below to configuration an integration server to the IBM Integration Bus Kibana dashboard.",
+              
+              "section":"<h4>Explore the IBM Integration Bus Kibana dashboard</h4>",
               "steps":
               {
                 "type": "ordered",
                 "details":
                 [
                   {
-                    "details": "Follow the instructions in <b>Configuring the integration server and loading the IBM Integration Bus Kibana dashboard manually</b> of the Knowledge Center to setup and import all thes into <b>Kibana 4</b>."
+                    "details": "When following the Prepare instructions, the <code>mqsichangebluemixreporting</code> command was executed using the <b>-d</b> option was used which automatically publishes the IBM Integration Bus Kibana dashboard so that it is ready for use."
                   },
                   {
-                    "details": "Once everything are imported, select the <b>Dashboard</b> tab under <b>Kibana 4</b> and click on <b>Load Saved Dasboard</b> (open folder) button."
+                    "details": "Open a web browser window to the dashboard at: https:&#x2F;&#x2F;logmet.ng.bluemix.net&#x2F;app&#x2F;#&#x2F;kibana4&#x2F;dashboard"
                   },
                   {
-                    "details": "Under the <b>Dashboard Filter</b> entry field, select <b>IBM Integration Bus Dashboard</b>, this will open the imported dashboard with the predefined visuals."
+                    "details": "Click the <b>Load Saved Dashboard</b> icon (which looks like an open folder) on the right of the screen."
                   },
                   {
-                    "details": "If the visuals are displaying the message <b>No results found</b>, try changing the time filter (clock icon on top right) to a larger value."
+                    "details": "Under the <b>Dashboard Filter</b> entry field, select <b>IBM Integration Bus Dashboard</b>, and this will open the imported dashboard containing some predefined visuals."
+                  },
+                  {
+                    "details": "At this stage the visuals will probably be displaying the message <b>No results found</b>, which suggests that IIB has not yet sent any log entries in to the dashboard."
+                  },
+                  {
+                   "details": "try changing the time filter (clock icon on top right) to a larger value."
                   }
                 ]
               }
+            },
+            {
+              "section":"<h4>Generate some log entries to populate the dashboard</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                        {
+                        "details": "Open the <b>LogMessages</b> message flow and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow. If your Toolkit is connected to multiple servers, you may be asked which one you would like to use. Select an Integration Server under the node which you prepared with the <code>mqsichangebluemixreporting</code> command earlier."
+                        },
+                        {
+                        "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />, and choose the provided <b>ExampleInput</b> and click Send."
+                        },
+                        {
+                        "details": "Return to your web browser, refresh the page, and you should see log events have now started to populate the charts. If you still don't see any data then review your settings or look for any errors in your local event log, noting that there is a time filter set on the dashboard which by default will only show you events from the last 15 minutes (just in case you have let time slip by since sending in the data!)"
+                        }
+                ]
+              }
             }
+            
           ]
         }
       },
@@ -211,15 +236,12 @@
         "overview": 
         {
           "name": "Extend",
-          "heading": "Follow these steps to complete the tutorial",
+          "heading": "Extend the basic IBM Integration Bus dashboard with your own customization",
           "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
           "sections": 
           [
             {
-              "section": "Deploy the <b>LogMessages</b> application to your integration server and run it a few times to generate some data for the log."
-            },
-            {
-              "section": "Use the instruction below to create a custom chart to track a specific IBM Integration Bus log messages:",
+              "section": "The instructions below demonstrate how you can customize a Kibana dashboard by adding your own vizualization to track a specific type of IBM Integration Bus log message:",
               "steps":
               {
                 "type": "ordered",
@@ -250,7 +272,7 @@
                     "details": "Click on the <b>Save Visualize</b> (small disk icon on top right) to save the chart."
                   },
                   {
-                    "details": "Once the chart is saved, it can be add to the dashboard by clicking on the <b>Add Visualization</b> button."
+                    "details": "Once the chart is saved, it can be added to the dashboard by clicking on the <b>Add Visualization</b> button which you will find back on the dashboard tab in the top right corner (circular icon with a plus sign)."
                   },
                   {
                     "details": "Select the new chart from the list and it will be added to the bottom of the dashboard. You can move and resize it, or replace an existing one in the dashboard."
@@ -259,7 +281,7 @@
               }
             },
             {
-              "section": "This tutorial has shown how to register IBM Integration Bus with Hybrid Connect Logging service, and create new charts in Kibana to track a particular message."
+              "section": "This tutorial has shown how to send log events from IBM Integration Bus to a Kibana dashboard in Bluemix, and create new charts in Kibana to track a particular log message type."
             }
           ]
         },
@@ -272,17 +294,6 @@
               "title": "Knowledge Center link to ",
               "description": "Testing your message flow by using the Flow exerciser",
               "link": "com.ibm.etools.mft.doc/rt26110_.htm"
-            }
-          ]
-        },
-        "actions": 
-        {
-          "title": "Run Actions",
-          "details": 
-          [
-            {
-              "name": "Deploy",
-              "method": "deployArtifacts()"
             }
           ]
         },
