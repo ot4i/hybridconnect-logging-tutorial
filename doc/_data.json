@@ -32,8 +32,8 @@
   {
     "_common": 
     {
-      "name": "Hybrid Connect Logging",
-      "shortDescription": "Learn how to register IBM Integration Bus with the Hybrid Connect logging (Logmet) service.",
+      "name": "Using Bluemix Kibana dashboards to view IBM Integration Bus Logs",
+      "shortDescription": "Learn how to use a Kibana Dashboard on Bluemix to get a centralized view of IBM Integration Bus Logs.",
       "durationText": "This tutorial takes approximately",
       "durationTime": "10 minutes",
       "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
@@ -51,7 +51,7 @@
       "topicList": 
       [
         {
-          "title": "Registing IBM Integration Bus logs with Hybrid Connect Logging (Logmet) service"
+          "title": "The IBM Integration Bus Kibana dashboard"
         }
       ],
       "outcomesName": "Learning outcomes",
@@ -59,7 +59,7 @@
       "outcomeList": 
       [
         {
-          "title": "Registing IBM Integration Bus with Hybrid Connect Logging (Logmet) service."
+          "title": "Configuring an integration server to send logging information to a Kibana dashboard in IBM Bluemix"
         }
       ],
       "summary": 
@@ -69,10 +69,10 @@
         "sections": 
         [
           {
-            "section": "This tutorial demonstrates how to display the IBM Integration Bus Dashboard using Kibana 4 in the Hybrid Connect Logging (Logmet) service."
+            "section": "IBM Integration Bus provides a facility to send logging information from configured integration servers to IBM Bluemix where you can display the reported information in a Kibana dashboard. This logging service is currently provided free of charge but is not yet recommended for use with a production environment (because IBM has not yet provided guarantees regarding large volumes of data and log retention periods)."
           },
           {
-            "section": "The Logmet service can be set up to receive logs from IBM Integration Bus. IBM Integration Bus provide a sample Kibana dashboard that user can change or replace with charts and tables of their own. You can use this to do data discovery and data analysis."
+            "section": "This tutorial demonstrates how IBM Integration Bus provides a sample (version 4) Kibana dashboard. Graphical and tabular views enable you to see important information quickly and easily. Users can change or replace these views with charts and tables of their own."
           }
         ]
       },
@@ -84,15 +84,9 @@
         [
           {
             "title": "Knowledge Center link to ",
-            "description": "Developing integration solutions by using applications",
-            "link": "com.ibm.etools.mft.doc/bi12002_.htm",
+            "description": "Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard",
+            "link": "com.ibm.etools.mft.doc/bz91180_.htm",
             "type": "help"
-          },
-          {
-            "title": "GitHub link to ",
-            "description": "DFDL Schemas",
-            "link": "http://github.com/DFDLSchemas",
-            "type": "web"
           }
         ]
       }
@@ -103,18 +97,68 @@
       {
         "overview": 
         {
-          "name": "Create",
-          "heading": "Import projects",
+          "name": "Prepare",
+          "heading": "",
           "_createComment": "A description of what will happen when the user clicks Import.",
           "sections": 
           [
             {
-              "section": "When you click Import, the <b>LogMessages</b> application will be created in you workspace."
-            },
+              "section":"<h4>Configure IBM Integration Bus to send Logs to Kibana in Bluemix</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                           {
+                              "details":"Configure your integration server to send its log events to Bluemix:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"Open the IBM Integration Console window and type the following commands:"
+                                    },
+                                    {
+                                       "details":"<code>mqsistop <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name"
+                                    },                                    
+                                    {
+                                       "details":"<code>mqsichangebluemixreporting <b>TESTNODE_userid</b> -g -l active -r <b>us-south</b> -o <b>a.user@comp.com</b> -a <b>dev</b> -u <b>joe.bloggs@company.com</b> -p <b>password123</b> -d</code><br>where<br><b>us-south</b> is your Bluemix region (either us-south or eu-gb)<br><b>dev</b> is your Bluemix organization<br><b>joe.bloggs@company.com</b> is your Bluemix userid<br><b>password123</b> is your Bluemix password"
+                                    },
+                                    {
+                                       "details":"<code>mqsistart <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name"
+                                    }
+                                 ]
+                                }
+                           }
+                          ]
+              }
+            },              
             {
-              "section": "<b>LogMessages</b> uses the <b>Compute</b> node to log different types of messages into the system log and also a <b>Trace</b> node for tracking the execution of the flow. This will be use as a way to create data for the Logmet service."
+              "section":"<h4>Import the provided test application into your workspace</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                           {
+                               "details":"When you click the Import option (to the right), the <b>LogMessages</b> Application will be created in your workspace."
+                           },
+                           {
+                               "details":"The <b>LogMessages</b> application also contains a message flow named <b>LogMessages</b> which has a <b>Compute</b> node which logs different types of messages into the system log and also a <b>Trace</b> node for recording the logical tree structure in the log at the end of the flow. The execution of this message flow will be used as a way to create data for us to view in the Kibana dashboard."
+                           }
+                          ]
+              }
             }
           ]
+        },
+        "helpLinks": 
+        {
+            "_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+            "title": "Find out more",
+            "details": 
+            [
+              {
+                "title": "Knowledge Center link to ",
+                "description": "Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard",
+                "link": "com.ibm.etools.mft.doc/bz91180_.htm",
+                "type": "help"
+              }
+            ]
         },
         "actions": 
         {
@@ -132,7 +176,7 @@
       {
         "overview": 
         {
-          "name": "Prepare",
+          "name": "Run",
           "heading": "Configuring IBM Integration Bus Kibana dashboard",
           "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
           "sections": 
@@ -166,7 +210,7 @@
       {
         "overview": 
         {
-          "name": "Run",
+          "name": "Extend",
           "heading": "Follow these steps to complete the tutorial",
           "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
           "sections": 
