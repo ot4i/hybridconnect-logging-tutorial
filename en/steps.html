@@ -43,7 +43,7 @@
 	</div>
 	<div class="row">
 	  <div class="small-9 medium-9 large-9 columns">
-	    <h4 class="title">Hybrid Connect Logging <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	    <h4 class="title">Using Bluemix Kibana dashboards to view IBM Integration Bus Logs <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
 	  </div>
 	  <div class="small-3 medium-3 large-3 columns">
 		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
@@ -52,7 +52,7 @@
 	<hr>
 	<div class="row">
 		<div class="small-10 medium-10 large-10 columns">
-		<h5> Learn how to register IBM Integration Bus with the Hybrid Connect logging (Logmet) service. </h5>
+		<h5> Learn how to use a Kibana Dashboard on Bluemix to get a centralized view of IBM Integration Bus Logs. </h5>
 		</div>
 		<div class="small-2 medium-2 large-2 columns">
 			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
@@ -63,13 +63,13 @@
 		  <div class="small-12 medium-12 large-12 columns">
 			<ul class="tabs vertical"> 
 				<li class="tab-title tab-title-small active">
-				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				  <a href="javascript:;" onclick="show('panel21')">Prepare</a> 
 				</li>
 				<li class="tab-title tab-title-small">
-				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				  <a href="javascript:;" onclick="show('panel31')">Run</a> 
 				</li>
 				<li class="tab-title tab-title-small">
-				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				  <a href="javascript:;" onclick="show('panel41')">Extend</a> 
 				</li>
 			</ul>
 			<!-- editing -->
@@ -79,15 +79,74 @@
 		    		<div class="small-10 medium-10 large-10 columns divider">
 					
 				      	<div class="row content-details">
-					      	<h4>Import projects</h4>
+					      	<h4></h4>
 					        
 						    
-								<p> When you click Import, the <b>LogMessages</b> application will be created in you workspace. </p>
+								<p> <h4>Configure IBM Integration Bus to send Logs to Kibana in Bluemix</h4> </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Configure your integration server to send its log events to Bluemix:
+										
+										
+											
+											<ol>
+											
+												
+													<li> Open the IBM Integration Console window and type the following commands:</li>
+												
+													<li> <code>mqsistop <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name</li>
+												
+													<li> <code>mqsichangebluemixreporting <b>TESTNODE_userid</b> -g -l active -r <b>us-south</b> -o <b>a.user@comp.com</b> -a <b>dev</b> -u <b>joe.bloggs@company.com</b> -p <b>password123</b> -d</code><br>where<br><b>us-south</b> is your Bluemix region (either us-south or eu-gb)<br><b>dev</b> is your Bluemix organization<br><b>joe.bloggs@company.com</b> is your Bluemix userid<br><b>password123</b> is your Bluemix password</li>
+												
+													<li> <code>mqsistart <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
 								
 							
-								<p> <b>LogMessages</b> uses the <b>Compute</b> node to log different types of messages into the system log and also a <b>Trace</b> node for tracking the execution of the flow. This will be use as a way to create data for the Logmet service. </p>
+								<p> <h4>Import the provided test application into your workspace</h4> </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> When you click Import, the <b>LogMessages</b> Application will be created in your workspace.
+										
+										</li>
+									
+										<li> The <b>LogMessages</b> application also contains a message flow named <b>LogMessages</b> which has a <b>Compute</b> node which logs different types of messages into the system log and also a <b>Trace</b> node for recording the logical tree structure in the log at the end of the flow. The execution of this message flow will be used as a way to create data for us to view in the Kibana dashboard.
+										
+										</li>
+									
+									
+									</ol>
+									
 								
 							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bz91180_.htm')" title="Knowledge Center link to Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard">Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard</a> </li>
+							   	
+							
+							</ul>
 						</div>
 						
 					</div>
