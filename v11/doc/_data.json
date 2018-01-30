@@ -1,0 +1,315 @@
+{
+  "version": "0.6",
+  "pageContent": 
+  {
+    "_comments": "JSON object that contains data for page labels, buttons, etc.",
+    "navItems": 
+    {
+      "_common": 
+      {
+        "buttonBackToGallery": 
+        {
+          "name": "Back To Gallery",
+          "method": "backToGallery()",
+          "idName": "backToGallery"  
+        },
+        "buttonStartTutorial": 
+        {
+          "name": "Start Tutorial",
+          "method": "startTutorialFromDetailsScreen()",
+          "idName": "startTutorial"
+        },
+        "buttonViewDetails": 
+        {
+          "name": "View Details",
+          "method": "viewDetails()",
+          "idName": "stepsViewDetails"  
+        }
+      }
+    }
+  },
+  "tutorial": 
+  {
+    "_common": 
+    {
+      "name": "Using Bluemix Kibana dashboards to view IBM Integration Bus Logs",
+      "shortDescription": "Learn how to use a Kibana Dashboard on Bluemix to get a centralized view of IBM Integration Bus Logs.",
+      "durationText": "This tutorial takes approximately",
+      "durationTime": "10 minutes",
+      "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+      "resourceToOpen": "MainFlow",
+      "helpLink": 
+      {
+        "text": "IBM Knowledge Center",
+        "link": "/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm"
+      }
+    },
+    "pageDetails": 
+    {
+      "topicsName": "Tutorial Topics",
+      "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+      "topicList": 
+      [
+        {
+          "title": "The IBM Integration Bus Kibana dashboard"
+        }
+      ],
+      "outcomesName": "Learning outcomes",
+      "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+      "outcomeList": 
+      [
+        {
+          "title": "Configuring an integration server to send logging information to a Kibana dashboard in IBM Bluemix"
+        }
+      ],
+      "summary": 
+      {
+        "overviewName": "OVERVIEW",
+        "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+        "sections": 
+        [
+          {
+            "section": "IBM Integration Bus provides a facility to send logging information from configured integration servers to IBM Bluemix where you can display the reported information in a Kibana dashboard. This logging service is currently provided free of charge but is not yet recommended for use with a production environment (because IBM has not yet provided guarantees regarding large volumes of data and log retention periods)."
+          },
+          {
+            "section": "This tutorial demonstrates how IBM Integration Bus provides a sample (version 4) Kibana dashboard. Graphical and tabular views enable you to see important information quickly and easily. Users can change or replace these views with charts and tables of their own."
+          }
+        ]
+      },
+      "helpLinks": 
+      {
+        "_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+        "title": "Find out more",
+        "details": 
+        [
+          {
+            "title": "Knowledge Center link to ",
+            "description": "Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard",
+            "link": "com.ibm.etools.mft.doc/bz91180_.htm",
+            "type": "help"
+          }
+        ]
+      }
+    },
+    "pageSteps": 
+    {
+      "create": 
+      {
+        "overview": 
+        {
+          "name": "Prepare",
+          "heading": "",
+          "_createComment": "A description of what will happen when the user clicks Import.",
+          "sections": 
+          [
+            {
+              "section":"<h4>Configure IBM Integration Bus to send Logs to Kibana in Bluemix</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                           {
+                              "details":"Configure your integration server to send its log events to Bluemix:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"Open the IBM Integration Console window and type the following commands:"
+                                    },
+                                    {
+                                       "details":"<code>mqsistop <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name"
+                                    },                                    
+                                    {
+                                       "details":"<code>mqsichangebluemixreporting <b>TESTNODE_userid</b> -g -l active -r <b>us-south</b> -o <b>a.user@comp.com</b> -a <b>dev</b> -u <b>joe.bloggs@company.com</b> -p <b>password123</b> -d</code><br>where<br><b>us-south</b> is your Bluemix region (either us-south or eu-gb)<br><b>dev</b> is your Bluemix organization<br><b>joe.bloggs@company.com</b> is your Bluemix userid<br><b>password123</b> is your Bluemix password"
+                                    },
+                                    {
+                                       "details":"<code>mqsistart <b>TESTNODE_userid</b></code> where <b>TESTNODE_userid</b> is the IIB node name"
+                                    }
+                                 ]
+                                }
+                           }
+                          ]
+              }
+            },              
+            {
+              "section":"<h4>Import the provided test application into your workspace</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                           {
+                               "details":"When you click Import, the <b>LogMessages</b> Application will be created in your workspace."
+                           },
+                           {
+                               "details":"The <b>LogMessages</b> application also contains a message flow named <b>LogMessages</b> which has a <b>Compute</b> node which logs different types of messages into the system log and also a <b>Trace</b> node for recording the logical tree structure in the log at the end of the flow. The execution of this message flow will be used as a way to create data for us to view in the Kibana dashboard."
+                           }
+                          ]
+              }
+            }
+          ]
+        },
+        "helpLinks": 
+        {
+            "_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+            "title": "Find out more",
+            "details": 
+            [
+              {
+                "title": "Knowledge Center link to ",
+                "description": "Reporting logging information to a Logmet service in IBM Bluemix and displaying it in a Kibana dashboard",
+                "link": "com.ibm.etools.mft.doc/bz91180_.htm",
+                "type": "help"
+              }
+            ]
+        },
+        "actions": 
+        {
+          "title": "Create Actions",
+          "details": 
+          [
+            {
+              "name": "Import",
+              "method": "importArtifacts()"
+            }
+          ]
+        }
+      },
+      "prepare": 
+      {
+        "overview": 
+        {
+          "name": "Run",
+          "heading": "",
+          "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+          "sections": 
+          [
+            {
+              
+              "section":"<h4>Explore the IBM Integration Bus Kibana dashboard</h4>",
+              "steps":
+              {
+                "type": "ordered",
+                "details":
+                [
+                  {
+                    "details": "When following the Prepare instructions, the <code>mqsichangebluemixreporting</code> command was executed using the <b>-d</b> option was used which automatically publishes the IBM Integration Bus Kibana dashboard so that it is ready for use."
+                  },
+                  {
+                    "details": "Open a web browser window to the dashboard at: https:&#x2F;&#x2F;logmet.ng.bluemix.net&#x2F;app&#x2F;#&#x2F;kibana4&#x2F;dashboard"
+                  },
+                  {
+                    "details": "Click the <b>Load Saved Dashboard</b> icon (which looks like an open folder) on the right of the screen."
+                  },
+                  {
+                    "details": "Under the <b>Dashboard Filter</b> entry field, select <b>IBM Integration Bus Dashboard</b>, and this will open the imported dashboard containing some predefined visuals."
+                  },
+                  {
+                    "details": "At this stage the visuals will probably be displaying the message <b>No results found</b>, which suggests that IIB has not yet sent any log entries in to the dashboard."
+                  },
+                  {
+                   "details": "try changing the time filter (clock icon on top right) to a larger value."
+                  }
+                ]
+              }
+            },
+            {
+              "section":"<h4>Generate some log entries to populate the dashboard</h4>",
+              "steps":{
+                        "type":"ordered",
+                        "details":[
+                        {
+                        "details": "Open the <b>LogMessages</b> message flow and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow. If your Toolkit is connected to multiple servers, you may be asked which one you would like to use. Select an Integration Server under the node which you prepared with the <code>mqsichangebluemixreporting</code> command earlier."
+                        },
+                        {
+                        "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />, and choose the provided <b>ExampleInput</b> and click Send."
+                        },
+                        {
+                        "details": "Return to your web browser, refresh the page, and you should see log events have now started to populate the charts. If you still don't see any data then review your settings or look for any errors in your local event log, noting that there is a time filter set on the dashboard which by default will only show you events from the last 15 minutes (just in case you have let time slip by since sending in the data!)"
+                        }
+                ]
+              }
+            }
+            
+          ]
+        }
+      },
+      "run": 
+      {
+        "overview": 
+        {
+          "name": "Extend",
+          "heading": "Extend the basic IBM Integration Bus dashboard with your own customization",
+          "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+          "sections": 
+          [
+            {
+              "section": "The instructions below demonstrate how you can customize a Kibana dashboard by adding your own vizualization to track a specific type of IBM Integration Bus log message:",
+              "steps":
+              {
+                "type": "ordered",
+                "details":
+                [
+                  {
+                    "details": "In <b>Kibana 4</b> click on <b>Visualize</b> and then <b>Vertical bar chart</b>."
+                  },
+                  {
+                    "details": "Select <b>From a saved search</b>, and then <b>IBM Log Events</b>."
+                  },
+                  {
+                    "details": "Click on <b>X-Axis</b> as the bucket type."
+                  },
+                  {
+                    "details": "Under <b>Aggregation</b>, select <b>Date Histogram</b>."
+                  },
+                  {
+                    "details": "Click on <b>Add sub-buckets</b<, and select <b>Split Bars</b>."
+                  },
+                  {
+                    "details": "In the <b>Sub Aggregation</b> field select <b>Filters</b>."
+                  },
+                  {
+                    "details": "Enter <b>ibm_messageId:3051</b> into <b>Filter 1</b> and press the <b>Apply changes</b> (white triangle in a green background) button to update the chart to show data for message id 3051."
+                  },
+                  {
+                    "details": "Click on the <b>Save Visualize</b> (small disk icon on top right) to save the chart."
+                  },
+                  {
+                    "details": "Once the chart is saved, it can be added to the dashboard by clicking on the <b>Add Visualization</b> button which you will find back on the dashboard tab in the top right corner (circular icon with a plus sign)."
+                  },
+                  {
+                    "details": "Select the new chart from the list and it will be added to the bottom of the dashboard. You can move and resize it, or replace an existing one in the dashboard."
+                  }
+                ]
+              }
+            },
+            {
+              "section": "This tutorial has shown how to send log events from IBM Integration Bus to a Kibana dashboard in Bluemix, and create new charts in Kibana to track a particular log message type."
+            }
+          ]
+        },
+        "helpLinks": 
+        {
+          "title": "Find out more",
+          "details": 
+          [
+            {
+              "title": "Knowledge Center link to ",
+              "description": "Testing your message flow by using the Flow exerciser",
+              "link": "com.ibm.etools.mft.doc/rt26110_.htm"
+            }
+          ]
+        },
+        "exits": 
+        {
+          "title": "Run Exits",
+          "details": 
+          [
+            {
+              "name": "Clean Up",
+              "description": "Clean up and remove any changes in your workspace made by the tutorial.",
+              "method": "cleanUp()"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
